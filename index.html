@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== AUTH SCREEN ===== -->
+  <section id="auth-screen" class="screen">
+    <div class="auth-card">
+      <img src="logo.png" alt="Ascend" class="logo-image-large">
+      <p class="tagline">Rise through your craft.</p>
+
+      <div id="login-form" class="auth-form">
+        <input type="text" id="login-username" placeholder="Email or Phone Number">
+        <input type="password" id="login-password" placeholder="Password">
+        <button class="btn-primary" id="login-btn">Log In</button>
+        <p class="switch-text">New here? <span id="show-signup">Create an account</span></p>
+      </div>
+
+      <div id="signup-form" class="auth-form hidden">
+        <input type="text" id="signup-username" placeholder="Email or Phone Number">
+        <input type="password" id="signup-password" placeholder="Choose a password">
+        <button class="btn-primary" id="signup-btn">Sign Up</button>
+        <p class="switch-text">Already have an account? <span id="show-login">Log in</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUCCESS TICK OVERLAY ===== -->
+  <div id="success-overlay" class="success-overlay hidden">
+    <div class="success-box">
+      <svg class="tick-svg" viewBox="0 0 52 52">
+        <circle class="tick-circle" cx="26" cy="26" r="24" fill="none"/>
+        <path class="tick-check" fill="none" d="M14 27 L22 35 L38 17"/>
+      </svg>
+      <p id="success-message" class="success-message">Success!</p>
+    </div>
+  </div>
+
+  <!-- ===== MAIN APP ===== -->
+  <section id="app-screen" class="screen hidden">
+    <header class="topbar">
+      <img src="logo.png" alt="Ascend" class="logo-image-small">
+      <nav class="nav-links">
+        <button class="nav-btn active" data-view="explore-view">Explore</button>
+        <button class="nav-btn" data-view="spotlight-view">Spotlight</button>
+        <button class="nav-btn" data-view="profile-view">Profile</button>
+      </nav>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="icon-btn" title="Toggle theme">🌙</button>
+        <button id="logout-btn" class="btn-ghost">Log Out</button>
+      </div>
+    </header>
+
+    <!-- Explore View: Search + Grid (no sidebar) -->
+    <main id="explore-view" class="view">
+
+      <div id="explore-browse">
+        <div class="view-header">
+          <h2 id="explore-heading">All Talents</h2>
+          <button id="new-talent-btn" class="btn-primary">+ Post a Talent</button>
+        </div>
+
+        <div class="search-bar-wrap">
+          <input type="text" id="user-search-input" placeholder="🔍 Search people by username...">
+          <div id="user-search-results" class="user-search-dropdown hidden"></div>
+        </div>
+
+        <div class="post-grid" id="post-grid"></div>
+      </div>
+
+      <!-- Reels view (opened from clicking a grid post) -->
+      <div id="category-posts-section" class="hidden">
+        <div class="reels-topbar">
+          <button id="back-to-categories" class="btn-ghost">← Back</button>
+          <h3 id="category-title"></h3>
+        </div>
+        <div class="reels-container" id="reels-container"></div>
+      </div>
+    </main>
+
+    <!-- Spotlight View -->
+    <main id="spotlight-view" class="view hidden">
+      <h2>🏆 This Week's Spotlight</h2>
+      <p class="view-subtext">Top endorsed talents across all categories</p>
+      <div class="talent-list" id="spotlight-list"></div>
+    </main>
+
+    <!-- Profile View -->
+    <main id="profile-view" class="view hidden">
+      <div class="profile-card">
+        <div class="avatar-large">👤</div>
+        <h2 id="profile-username"></h2>
+        <div class="tier-badge" id="activity-tier-badge">Newcomer</div>
+        <div class="progress-bar-wrap">
+          <div class="progress-bar" id="activity-progress"></div>
+        </div>
+        <p class="progress-label" id="activity-progress-label"></p>
+
+        <div class="profile-stats">
+          <div><strong id="stat-talents">0</strong><span>Talents Posted</span></div>
+          <div><strong id="stat-endorsements">0</strong><span>Endorsements</span></div>
+          <div><strong id="stat-streak">0</strong><span>🔥 Streak</span></div>
+        </div>
+
+        <h3 class="my-talents-heading">My Talents</h3>
+        <div class="talent-list" id="my-talent-list"></div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===== NEW TALENT MODAL ===== -->
+  <div id="talent-modal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Post a Talent</h3>
+      <select id="talent-category">
+        <option value="performing">Performing Arts</option>
+        <option value="technical">Technical</option>
+        <option value="academic">Academic</option>
+        <option value="sports">Sports & Fitness</option>
+      </select>
+      <input type="text" id="talent-title" placeholder="Talent name e.g. Classical Guitar">
+      <textarea id="talent-desc" placeholder="Describe it briefly..."></textarea>
+      <input type="file" id="talent-image" accept="image/*,video/*">
+      <img id="talent-image-preview" class="hidden" alt="preview">
+      <video id="talent-video-preview" class="hidden" controls></video>
+      <div class="modal-actions">
+        <button id="cancel-talent" class="btn-ghost">Cancel</button>
+        <button id="submit-talent" class="btn-primary">Post</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
