@@ -1,14 +1,12 @@
-# ascend-talent-platform
+# Ascend
+
 **Rise through your craft.**
 
-Ascend is a talent discovery social media platform. Users post their talents as photos or videos, other users endorse them, and each talent climbs through recognition tiers instead of collecting likes and followers.
-
-## Live Demo
-https://komalahasini.github.io/ascend-talent-platform
+Ascend is a talent discovery social media platform. Users post their talents as photos or videos, other users endorse them, and each talent climbs through recognition tiers instead of collecting likes and followers. Accounts and posts are stored in a shared online database, so everyone sees the same talents.
 
 ## Features
 - Sign up and login with email or phone number, with a tick confirmation
-- People search by username
+- Search people by username
 - Instagram-style grid of all talents
 - Reels-style full-screen feed with snap scrolling
 - Photo and video uploads
@@ -26,25 +24,25 @@ https://komalahasini.github.io/ascend-talent-platform
 | Legend | 50+ |
 
 ## Tech Stack
-- **HTML** for page structure
-- **CSS** for layout (Grid and Flexbox), theme variables, scroll-snap and animations
-- **JavaScript** for DOM handling, events, localStorage and FileReader
+- **React 18** (components, props, state, hooks) with **Vite**
+- **CSS** (Grid, Flexbox, variables, scroll-snap, animations)
+- **JavaScript (ES6+)**
+- **Supabase** (PostgreSQL database and file storage) for shared data
 
-No frameworks or libraries are used.
-
-## Project Files
-- `index.html` - page structure
-- `style.css` - styling and theme
-- `script.js` - logic, data storage and tier system
-- `logo.png` - Ascend logo
-- `Ascend_Project_Presentation.pptx` - project presentation
+## Project Structure
+```
+src/
+  App.jsx              main component: state, login flow, page switching
+  api.js               all database calls
+  data.js              categories and tier logic
+  hooks/useLocalStorage.js   custom hook
+  components/          AuthScreen, Navbar, ExploreView, ReelsView,
+                       SpotlightView, ProfileView, PostModal, TalentCard, ...
+supabase/schema.sql    database setup
+```
 
 ## How to Run
-1. Download or clone this repository.
-2. Open `index.html` in a browser (or use Live Server in VS Code).
-3. Sign up, log in, and post a talent.
-
-Data is saved in the browser using localStorage, so it stays on your device.
+See [SETUP.md](SETUP.md).
 
 ## LinkedIn Article
-https://lnkd.in/p/eUqsQ8Tt
+[Paste your LinkedIn article link here]
